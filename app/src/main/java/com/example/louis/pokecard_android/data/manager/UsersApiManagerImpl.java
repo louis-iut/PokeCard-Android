@@ -24,9 +24,7 @@ public class UsersApiManagerImpl implements UsersApiManager {
     private APIEndpointUsersInterface apiEndpointUsersInterface;
 
     public UsersApiManagerImpl() {
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
+        Gson gson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
@@ -36,8 +34,6 @@ public class UsersApiManagerImpl implements UsersApiManager {
 
         apiEndpointUsersInterface = retrofit.create(APIEndpointUsersInterface.class);
     }
-
-
 
     @Override
     public Observable<List<User>> getUsers() {

@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by louis on 18/10/2017.
  */
 
-public interface PokemonsApiManager {
+public interface PokeApiManager {
 
     Observable<List<Pokemon>> getPokemons();
 }

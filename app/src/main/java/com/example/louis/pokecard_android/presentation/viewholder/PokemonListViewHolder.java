@@ -1,8 +1,49 @@
 package com.example.louis.pokecard_android.presentation.viewholder;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
+import com.squareup.picasso.Picasso;
+
+import butterknife.ButterKnife;
+
 /**
  * Created by louis on 18/10/2017.
  */
 
-public class PokemonListViewHolder {
+public class PokemonListViewHolder extends RecyclerView.ViewHolder {
+
+    ImageView imagePokemon;
+    private View itemView;
+
+    public PokemonListViewHolder(View itemView) {
+        super(itemView);
+        this.itemView = itemView;
+        ButterKnife.bind(this, itemView);
+    }
+
+    public void bind(Context context, final Pokemon pokemon, final PokemonListClickListener pokemonListClickListener) {
+        Picasso.with(context).load(pokemon.getImage()).into(imagePokemon);
+        setBackgroundColor(context, getAdapterPosition());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pokemonListClickListener.equals(pokemon.getId());
+            }
+        });
+    }
+
+    public void setBackgroundColor(Context context, int position) {
+
+       /* int color = (position %2 == 0)
+                ? ContextCompat.getColor(context, R.color.colorGrey)
+                : ContextCompat.getColor(context, R.color.colorDarkGrey);
+
+        itemView.setBackgroundColor(color);*/
+    }
 }

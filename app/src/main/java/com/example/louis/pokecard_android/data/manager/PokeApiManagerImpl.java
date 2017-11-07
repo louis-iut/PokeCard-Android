@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by louis on 18/10/2017.
  */
 
-public class PokemonsApiManagerImpl implements PokemonsApiManager {
+public class PokeApiManagerImpl implements PokeApiManager {
     @Override
     public Observable<List<Pokemon>> getPokemons() {
         return null;
