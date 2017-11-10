@@ -12,15 +12,11 @@ public class PokemonActivity extends AppCompatActivity implements PokemonNavigat
 
     private PokemonNavigator pokemonNavigator;
 
-    public PokemonActivity(PokemonNavigator pokemonNavigator) {
-        this.pokemonNavigator = pokemonNavigator;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        pokemonNavigator = new PokemonNavigator(getFragmentManager());
         pokemonNavigator.launchPokemonListFragment();
     }
 

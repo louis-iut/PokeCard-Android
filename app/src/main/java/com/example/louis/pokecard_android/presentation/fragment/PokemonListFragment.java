@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
@@ -82,6 +83,7 @@ public class PokemonListFragment extends Fragment implements PokemonListView, Po
 
     @Override
     public void sncakbarNoConnexion() {
-
+        Toast toast = Toast.makeText(getActivity(), "No connexion", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
