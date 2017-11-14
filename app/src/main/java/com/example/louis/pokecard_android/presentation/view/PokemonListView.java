@@ -5,4 +5,10 @@ package com.example.louis.pokecard_android.presentation.view;
  */
 
 public interface PokemonListView {
+<<<<<<< Updated upstream
+=======
+
+    void updateList(List<Pokemon> pokemonList);
+    void snackbarNoConnexion();
+>>>>>>> Stashed changes
 }

@@ -5,4 +5,5 @@ package com.example.louis.pokecard_android.presentation.listener;
  */
 
 public interface PokemonListClickListener {
+    void onClickOnPokemonList(int id);
 }
