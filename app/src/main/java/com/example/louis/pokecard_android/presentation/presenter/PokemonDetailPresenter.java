@@ -3,9 +3,7 @@ package com.example.louis.pokecard_android.presentation.presenter;
 import com.example.louis.pokecard_android.data.Repository;
 import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
-import com.example.louis.pokecard_android.presentation.view.PokemonListView;
-
-import java.util.List;
+import com.example.louis.pokecard_android.presentation.view.PokemonDetailView;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -13,48 +11,48 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by louis on 18/10/2017.
+ * Created by louis on 12/11/2017.
  */
 
-public class PokemonListPresenter {
+public class PokemonDetailPresenter {
 
     private Repository repository;
-    private PokemonListView pokemonListView;
+    private PokemonDetailView pokemonDetailView;
     private PokemonNavigatorListener pokemonNavigatorListener;
 
-    public PokemonListPresenter(Repository repository, PokemonNavigatorListener pokemonNavigatorListener) {
+    public PokemonDetailPresenter(Repository repository, PokemonNavigatorListener pokemonNavigatorListener) {
         this.repository = repository;
         this.pokemonNavigatorListener = pokemonNavigatorListener;
     }
 
-    public void setPokemonListView(PokemonListView pokemonListView) {
-        this.pokemonListView = pokemonListView;
+    public void setPokemonDetailView(PokemonDetailView pokemonDetailView) {
+        this.pokemonDetailView = pokemonDetailView;
     }
 
-    public void getPokemonList() {
-        observe(repository.getPokemonList());
+    public void getPokemon(int id) {
+        observe(repository.getPokemon(id));
     }
 
-    private void observe(Observable<List<Pokemon>> observable) {
+    private void observe(Observable<Pokemon> observable) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Pokemon>>() {
+                .subscribe(new Subscriber<Pokemon>() {
                     @Override
                     public void onCompleted() {}
 
                     @Override
                     public void onError(Throwable e) {
-                        pokemonListView.snackbarNoConnexion();
+                        pokemonDetailView.snackbarNoConnexion();
                     }
 
                     @Override
-                    public void onNext(List<Pokemon> pokemonList) {
-                        pokemonListView.updateList(pokemonList);
+                    public void onNext(Pokemon pokemon) {
+                        pokemonDetailView.updateUI(pokemon);
                     }
                 });
     }
 
-    public void onClickOnComicsList(int id) {
-        pokemonNavigatorListener.displayPokemonDetail(id);
+    public void backAction() {
+        pokemonNavigatorListener.onBackPressed();
     }
 }
