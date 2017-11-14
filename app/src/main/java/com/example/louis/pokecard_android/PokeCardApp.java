@@ -3,6 +3,7 @@ package com.example.louis.pokecard_android;
 import android.app.Application;
 
 import com.example.louis.pokecard_android.data.Repository;
+import com.example.louis.pokecard_android.data.manager.MembersApiMangerMock;
 import com.example.louis.pokecard_android.data.manager.PokeApiManager;
 import com.example.louis.pokecard_android.data.manager.PokeApiManagerMock;
 import com.example.louis.pokecard_android.data.manager.MembersApiManager;
@@ -35,7 +36,8 @@ public class PokeCardApp extends Application{
     }
 
     private void initManagers() {
-        membersApiManager = new MembersApiManagerImpl();
+        membersApiManager = new MembersApiMangerMock();
+        //membersApiManager = new MembersApiManagerImpl();
         pokeApiManager = new PokeApiManagerMock();
         //pokeApiManager = new PokeApiManagerImpl();
     }

@@ -12,6 +12,14 @@ public class Member {
     private String pseudo;
     private String mail;
 
+    public Member(int id, String firstName, String lastName, String pseudo, String mail) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.pseudo = pseudo;
+        this.mail = mail;
+    }
+
     public int getId() {
         return id;
     }

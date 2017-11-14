@@ -23,8 +23,8 @@ public class Repository {
         this.pokeApiManager = pokeApiManager;
     }
 
-    public Observable<List<Member>> getUsers() {
-        return membersApiManager.getUsers();
+    public Observable<List<Member>> getMembers() {
+        return membersApiManager.getMembers();
     }
 
     public Observable<List<Pokemon>> getPokemonList() {
@@ -35,5 +35,8 @@ public class Repository {
         return pokeApiManager.getPokemon(id);
     }
 
+    public Observable<Member> getMember(int id) {
+        return membersApiManager.getMember(id);
+    }
 
 }

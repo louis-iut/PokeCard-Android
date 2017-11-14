@@ -22,6 +22,7 @@ public class PokeApiManagerMock implements PokeApiManager {
 
     @Override
     public Observable<List<Pokemon>> getPokemonList() {
+
         return Observable.defer(new Func0<Observable<List<Pokemon>>>() {
             @Override
             public Observable<List<Pokemon>> call() {

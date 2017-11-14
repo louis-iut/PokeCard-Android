@@ -14,7 +14,7 @@ public class PokemonActivity extends AppCompatActivity implements PokemonNavigat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pokemon);
         pokemonNavigator = new PokemonNavigator(getFragmentManager());
         pokemonNavigator.launchPokemonListFragment();
     }

@@ -42,7 +42,7 @@ public class PokemonNavigator {
 
         fragmentManager
                 .beginTransaction()
-                .addToBackStack("comicsDetailView")
+                .addToBackStack("pokeDetailView")
                 .replace(R.id.frame_layout, (Fragment) pokemonDetailView)
                 .commit();
 

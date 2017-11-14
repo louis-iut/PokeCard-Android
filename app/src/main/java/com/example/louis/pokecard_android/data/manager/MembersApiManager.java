@@ -12,5 +12,7 @@ import rx.Observable;
 
 public interface MembersApiManager {
 
-    Observable<List<Member>> getUsers();
+    Observable<List<Member>> getMembers();
+    Observable<Member> getMember(int id);
+
 }

@@ -1,6 +1,7 @@
 package com.example.louis.pokecard_android.data.manager;
 
 import com.example.louis.pokecard_android.data.entity.Member;
+import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -20,34 +21,13 @@ import rx.schedulers.Schedulers;
 
 public class MembersApiManagerImpl implements MembersApiManager {
 
-    public static final String URL = "https://pokeapi.co/api/v2/pokedex/";
-    private APIEndpointUsersInterface apiEndpointUsersInterface;
-
-    public MembersApiManagerImpl() {
-        Gson gson = new GsonBuilder().create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build();
-
-        apiEndpointUsersInterface = retrofit.create(APIEndpointUsersInterface.class);
+    @Override
+    public Observable<List<Member>> getMembers() {
+        return null;
     }
 
     @Override
-    public Observable<List<Member>> getUsers() {
-        return apiEndpointUsersInterface.getUsers().map(new Func1<List<Member>, List<Member>>() {
-            @Override
-            public List<Member> call(List<Member> members) {
-                return members;
-            }
-        });
+    public Observable<Member> getMember(int id) {
+        return null;
     }
-
-    public interface APIEndpointUsersInterface {
-        @GET("1")
-        Observable<List<Member>> getUsers();
-    }
-
 }

@@ -2,7 +2,12 @@ package com.example.louis.pokecard_android.presentation.presenter;
 
 import com.example.louis.pokecard_android.data.Repository;
 import com.example.louis.pokecard_android.data.entity.Member;
+import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.presentation.listener.MemberNavigatorListener;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
+import com.example.louis.pokecard_android.presentation.view.MemberDetailView;
+import com.example.louis.pokecard_android.presentation.view.MemberListView;
+import com.example.louis.pokecard_android.presentation.view.PokemonDetailView;
 import com.example.louis.pokecard_android.presentation.view.PokemonListView;
 
 import java.util.List;
@@ -18,18 +23,21 @@ import rx.schedulers.Schedulers;
 
 public class MemberListPresenter {
 
-    private PokemonListView pokemonListView;
-    private PokemonNavigatorListener pokemonNavigatorListener;
     private Repository repository;
+    private MemberListView memberListView;
+    private MemberNavigatorListener memberNavigatorListener;
 
-    public MemberListPresenter(PokemonListView pokemonListView, PokemonNavigatorListener pokemonNavigatorListener, Repository repository) {
-        this.pokemonListView = pokemonListView;
-        this.pokemonNavigatorListener = pokemonNavigatorListener;
+    public MemberListPresenter(Repository repository, MemberNavigatorListener memberNavigatorListener) {
         this.repository = repository;
+        this.memberNavigatorListener = memberNavigatorListener;
     }
 
-    public void getUsersFromApi() {
-        observe(repository.getUsers());
+    public void setMemberListView(MemberListView memberListView) {
+        this.memberListView = memberListView;
+    }
+
+    public void getMemberList() {
+        observe(repository.getMembers());
     }
 
     private void observe(Observable<List<Member>> observable) {
@@ -41,13 +49,17 @@ public class MemberListPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        //pokemonListView.();
+                        memberListView.snackbarNoConnexion();
                     }
 
                     @Override
-                    public void onNext(List<Member> members) {
-                        //.updateList(members);
+                    public void onNext(List<Member> memberList) {
+                        memberListView.updateList(memberList);
                     }
                 });
+    }
+
+    public void onClickOnMembersList(int id) {
+        memberNavigatorListener.displayMemberDetail(id);
     }
 }
