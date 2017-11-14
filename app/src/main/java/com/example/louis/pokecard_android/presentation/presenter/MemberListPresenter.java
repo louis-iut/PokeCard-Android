@@ -1,7 +1,7 @@
 package com.example.louis.pokecard_android.presentation.presenter;
 
 import com.example.louis.pokecard_android.data.Repository;
-import com.example.louis.pokecard_android.data.entity.User;
+import com.example.louis.pokecard_android.data.entity.Member;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.view.PokemonListView;
 
@@ -16,13 +16,13 @@ import rx.schedulers.Schedulers;
  * Created by louis on 18/10/2017.
  */
 
-public class UserListPresenter {
+public class MemberListPresenter {
 
     private PokemonListView pokemonListView;
     private PokemonNavigatorListener pokemonNavigatorListener;
     private Repository repository;
 
-    public UserListPresenter(PokemonListView pokemonListView, PokemonNavigatorListener pokemonNavigatorListener, Repository repository) {
+    public MemberListPresenter(PokemonListView pokemonListView, PokemonNavigatorListener pokemonNavigatorListener, Repository repository) {
         this.pokemonListView = pokemonListView;
         this.pokemonNavigatorListener = pokemonNavigatorListener;
         this.repository = repository;
@@ -32,10 +32,10 @@ public class UserListPresenter {
         observe(repository.getUsers());
     }
 
-    private void observe(Observable<List<User>> observable) {
+    private void observe(Observable<List<Member>> observable) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<User>>() {
+                .subscribe(new Subscriber<List<Member>>() {
                     @Override
                     public void onCompleted() {}
 
@@ -45,8 +45,8 @@ public class UserListPresenter {
                     }
 
                     @Override
-                    public void onNext(List<User> users) {
-                        //.updateList(users);
+                    public void onNext(List<Member> members) {
+                        //.updateList(members);
                     }
                 });
     }

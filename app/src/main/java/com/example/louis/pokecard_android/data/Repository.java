@@ -1,9 +1,9 @@
 package com.example.louis.pokecard_android.data;
 
 import com.example.louis.pokecard_android.data.entity.Pokemon;
-import com.example.louis.pokecard_android.data.entity.User;
+import com.example.louis.pokecard_android.data.entity.Member;
 import com.example.louis.pokecard_android.data.manager.PokeApiManager;
-import com.example.louis.pokecard_android.data.manager.UsersApiManager;
+import com.example.louis.pokecard_android.data.manager.MembersApiManager;
 
 import java.util.List;
 
@@ -15,16 +15,16 @@ import rx.Observable;
 
 public class Repository {
 
-    private UsersApiManager usersApiManager;
+    private MembersApiManager membersApiManager;
     private PokeApiManager pokeApiManager;
 
-    public Repository(UsersApiManager usersApiManager, PokeApiManager pokeApiManager) {
-        this.usersApiManager = usersApiManager;
+    public Repository(MembersApiManager membersApiManager, PokeApiManager pokeApiManager) {
+        this.membersApiManager = membersApiManager;
         this.pokeApiManager = pokeApiManager;
     }
 
-    public Observable<List<User>> getUsers() {
-        return usersApiManager.getUsers();
+    public Observable<List<Member>> getUsers() {
+        return membersApiManager.getUsers();
     }
 
     public Observable<List<Pokemon>> getPokemonList() {
