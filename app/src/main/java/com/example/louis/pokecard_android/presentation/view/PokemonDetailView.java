@@ -2,14 +2,12 @@ package com.example.louis.pokecard_android.presentation.view;
 
 import com.example.louis.pokecard_android.data.entity.Pokemon;
 
-import java.util.List;
-
 /**
- * Created by louis on 18/10/2017.
+ * Created by louis on 12/11/2017.
  */
 
-public interface PokemonListView {
+public interface PokemonDetailView {
 
-    void updateList(List<Pokemon> pokemonList);
+    void updateUI(Pokemon pokemon);
     void snackbarNoConnexion();
 }

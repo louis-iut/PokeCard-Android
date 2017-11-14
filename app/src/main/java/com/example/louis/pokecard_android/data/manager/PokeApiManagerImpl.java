@@ -12,7 +12,12 @@ import rx.Observable;
 
 public class PokeApiManagerImpl implements PokeApiManager {
     @Override
-    public Observable<List<Pokemon>> getPokemons() {
+    public Observable<List<Pokemon>> getPokemonList() {
+        return null;
+    }
+
+    @Override
+    public Observable<Pokemon> getPokemon(int id) {
         return null;
     }
 }

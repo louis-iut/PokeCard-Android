@@ -18,16 +18,21 @@ public class Repository {
     private UsersApiManager usersApiManager;
     private PokeApiManager pokeApiManager;
 
-    public Repository(UsersApiManager usersApiManager) {
+    public Repository(UsersApiManager usersApiManager, PokeApiManager pokeApiManager) {
         this.usersApiManager = usersApiManager;
+        this.pokeApiManager = pokeApiManager;
     }
 
     public Observable<List<User>> getUsers() {
         return usersApiManager.getUsers();
     }
 
-    public Observable<List<Pokemon>> getPokemons() {
-        return pokeApiManager.getPokemons();
+    public Observable<List<Pokemon>> getPokemonList() {
+        return pokeApiManager.getPokemonList();
+    }
+
+    public Observable<Pokemon> getPokemon(int id) {
+        return pokeApiManager.getPokemon(id);
     }
 
 

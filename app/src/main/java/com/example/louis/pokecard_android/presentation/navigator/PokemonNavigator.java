@@ -4,7 +4,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 
 import com.example.louis.pokecard_android.R;
+import com.example.louis.pokecard_android.presentation.fragment.PokemonDetailFragment;
 import com.example.louis.pokecard_android.presentation.fragment.PokemonListFragment;
+import com.example.louis.pokecard_android.presentation.view.PokemonDetailView;
 import com.example.louis.pokecard_android.presentation.view.PokemonListView;
 
 /**
@@ -21,7 +23,6 @@ public class PokemonNavigator {
 
     public PokemonNavigator(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
-        launchPokemonListFragment();
     }
 
     public void launchPokemonListFragment() {
@@ -37,15 +38,15 @@ public class PokemonNavigator {
     }
 
     public void launchDetailFragment(int id) {
-       /* ComicsDetailView comicsDetailView = ComicsDetailFragment.newInstance(id);
+        PokemonDetailView pokemonDetailView = PokemonDetailFragment.newInstance(id);
 
         fragmentManager
                 .beginTransaction()
                 .addToBackStack("comicsDetailView")
-                .replace(R.id.frame_layout, (Fragment) comicsDetailView)
+                .replace(R.id.frame_layout, (Fragment) pokemonDetailView)
                 .commit();
 
-        currentFragment = COMICS_DETAIL_FRAGMENT;*/
+        currentFragment = POKE_DETAIL_FRAGMENT;
     }
 
     public void backAction() {

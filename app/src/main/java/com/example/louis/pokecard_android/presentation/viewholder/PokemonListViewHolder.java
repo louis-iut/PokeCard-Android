@@ -4,11 +4,14 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.louis.pokecard_android.R;
 import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -17,7 +20,8 @@ import butterknife.ButterKnife;
 
 public class PokemonListViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView imagePokemon;
+    @BindView(R.id.item_pokemon_image) ImageView pokemonImage;
+    @BindView(R.id.item_pokemon_name) TextView pokemonName;
     private View itemView;
 
     public PokemonListViewHolder(View itemView) {
@@ -27,13 +31,14 @@ public class PokemonListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Context context, final Pokemon pokemon, final PokemonListClickListener pokemonListClickListener) {
-        Picasso.with(context).load(pokemon.getImage()).into(imagePokemon);
-        setBackgroundColor(context, getAdapterPosition());
+        Picasso.with(context).load(pokemon.getImage()).into(pokemonImage);
+        pokemonName.setText(pokemon.getName());
+        //setBackgroundColor(context, getAdapterPosition());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pokemonListClickListener.equals(pokemon.getId());
+                pokemonListClickListener.onClickOnPokemonList(pokemon.getId());
             }
         });
     }

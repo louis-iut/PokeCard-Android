@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.louis.pokecard_android.R;
-import com.example.louis.pokecard_android.data.Repository;
 import com.example.louis.pokecard_android.presentation.navigator.PokemonNavigator;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 
