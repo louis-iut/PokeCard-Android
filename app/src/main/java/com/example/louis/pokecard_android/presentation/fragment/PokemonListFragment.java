@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by louis on 18/10/2017.
  */
 
-public class PokemonListFragment extends Fragment implements PokemonListView, PokemonListClickListener{
+public class PokemonListFragment extends Fragment implements PokemonListView, PokemonListClickListener {
 
     private PokemonListPresenter pokemonListPresenter;
     private PokemonListAdapter pokemonListAdapter;

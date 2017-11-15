@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by louis on 12/11/2017.
  */
 
-public class PokemonDetailFragment extends Fragment implements PokemonDetailView{
+public class PokemonDetailFragment extends Fragment implements PokemonDetailView {
 
     private static final String POKEMON_ID_KEY = "com.example.louis.pokecard_android.presentation.fragment.PokemonDetailFragment.POKEMON_ID_KEY";
     private PokemonDetailPresenter pokemonDetailPresenter;
