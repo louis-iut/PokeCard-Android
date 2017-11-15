@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PokeCard-Android</string>
+
+    <!-- Menu -->
+    <string name="menu_label_pokemons">Mes Pokemons</string>
+    <string name="menu_label_members">Membres</string>
+
+
 </resources>

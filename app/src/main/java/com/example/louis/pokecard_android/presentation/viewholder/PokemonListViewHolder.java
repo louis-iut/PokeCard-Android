@@ -22,6 +22,7 @@ public class PokemonListViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.item_pokemon_image) ImageView pokemonImage;
     @BindView(R.id.item_pokemon_name) TextView pokemonName;
+
     private View itemView;
 
     public PokemonListViewHolder(View itemView) {
@@ -33,7 +34,6 @@ public class PokemonListViewHolder extends RecyclerView.ViewHolder {
     public void bind(Context context, final Pokemon pokemon, final PokemonListClickListener pokemonListClickListener) {
         Picasso.with(context).load(pokemon.getImage()).into(pokemonImage);
         pokemonName.setText(pokemon.getName());
-        //setBackgroundColor(context, getAdapterPosition());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,14 +41,5 @@ public class PokemonListViewHolder extends RecyclerView.ViewHolder {
                 pokemonListClickListener.onClickOnPokemonList(pokemon.getId());
             }
         });
-    }
-
-    public void setBackgroundColor(Context context, int position) {
-
-       /* int color = (position %2 == 0)
-                ? ContextCompat.getColor(context, R.color.colorGrey)
-                : ContextCompat.getColor(context, R.color.colorDarkGrey);
-
-        itemView.setBackgroundColor(color);*/
     }
 }
