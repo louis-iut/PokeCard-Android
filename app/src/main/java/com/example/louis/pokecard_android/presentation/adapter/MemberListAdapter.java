@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 
 import com.example.louis.pokecard_android.R;
 import com.example.louis.pokecard_android.data.entity.Member;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.example.louis.pokecard_android.presentation.listener.MemberListClickListener;
-import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
 import com.example.louis.pokecard_android.presentation.viewholder.MemberListViewHolder;
-import com.example.louis.pokecard_android.presentation.viewholder.PokemonListViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

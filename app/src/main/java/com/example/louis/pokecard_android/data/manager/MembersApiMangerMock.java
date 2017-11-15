@@ -30,7 +30,7 @@ public class MembersApiMangerMock implements MembersApiManager {
 
     @Override
     public Observable<Member> getMember(int id) {
-        return null;
+        return Observable.just(memberList.get(id));
     }
 
     private List<Member> createMemberListMock() {

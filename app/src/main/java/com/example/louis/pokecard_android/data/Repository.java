@@ -36,6 +36,7 @@ public class Repository {
     }
 
     public Observable<Member> getMember(int id) {
+
         return membersApiManager.getMember(id);
     }
 

@@ -22,21 +22,20 @@ public class MemberActivity extends AppCompatActivity implements MemberNavigator
 
     @Override
     public void displayMemberDetail(int id) {
-
+        memberNavigator.launchDetailFragment(id);
     }
 
     @Override
     public void displayMemberList() {
-
+        memberNavigator.launchMemberListFragment();
     }
 
     @Override
     public void shareAction(String url) {
-
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        memberNavigator.backAction();
     }
 }

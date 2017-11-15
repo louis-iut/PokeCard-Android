@@ -14,14 +14,10 @@ import android.widget.Toast;
 import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
 import com.example.louis.pokecard_android.data.entity.Member;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.example.louis.pokecard_android.presentation.adapter.MemberListAdapter;
-import com.example.louis.pokecard_android.presentation.adapter.PokemonListAdapter;
 import com.example.louis.pokecard_android.presentation.listener.MemberListClickListener;
 import com.example.louis.pokecard_android.presentation.listener.MemberNavigatorListener;
-import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.presenter.MemberListPresenter;
-import com.example.louis.pokecard_android.presentation.presenter.PokemonListPresenter;
 import com.example.louis.pokecard_android.presentation.view.MemberListView;
 
 import java.util.List;
@@ -109,7 +105,7 @@ public class MemberListFragment extends Fragment implements MemberListView, Memb
 
     @Override
     public void onClickOnMemberList(int id) {
-        memberListPresenter.onClickOnMembersList(id);
+            memberListPresenter.onClickOnMembersList(id);
     }
 }
 
