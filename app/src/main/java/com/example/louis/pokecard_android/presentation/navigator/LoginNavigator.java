@@ -29,7 +29,7 @@ public class LoginNavigator {
         fragmentManager
                 .beginTransaction()
                 .addToBackStack("pokeListView")
-                .add(R.id.frame_layout, (Fragment) loginView)
+                .add(R.id.login_frame_layout, (Fragment) loginView)
                 .commit();
 
         currentFragment = LOGIN_FRAGMENT;
@@ -41,5 +41,9 @@ public class LoginNavigator {
             fragmentManager.popBackStack();
             currentFragment = LOGIN_FRAGMENT;
         }
+    }
+
+    public Fragment getCurrentFragment() {
+        return fragmentManager.findFragmentById(R.id.login_frame_layout);
     }
 }

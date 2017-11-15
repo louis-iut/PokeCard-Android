@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginNavigator loginNavigator;
 
-    //CallbackManager callbackManager = CallbackManager.Factory.create();
+    CallbackManager callbackManager = CallbackManager.Factory.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,34 +27,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginNavigator = new LoginNavigator(getFragmentManager());
         loginNavigator.launchLoginFragment();
-/*
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_facebook_button);
-        // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Intent intent = new Intent(LoginActivity.this, PokemonActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-
-            }
-
-        });*/
     }
 
-/*    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,
-                resultCode, data);
-    }*/
-
+        loginNavigator.getCurrentFragment().onActivityResult(requestCode, resultCode, data);
+    }
 }
