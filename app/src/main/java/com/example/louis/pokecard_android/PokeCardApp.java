@@ -3,11 +3,11 @@ package com.example.louis.pokecard_android;
 import android.app.Application;
 
 import com.example.louis.pokecard_android.data.Repository;
+import com.example.louis.pokecard_android.data.manager.MembersApiMangerMock;
 import com.example.louis.pokecard_android.data.manager.PokeApiManager;
-import com.example.louis.pokecard_android.data.manager.PokeApiManagerImpl;
 import com.example.louis.pokecard_android.data.manager.PokeApiManagerMock;
-import com.example.louis.pokecard_android.data.manager.UsersApiManager;
-import com.example.louis.pokecard_android.data.manager.UsersApiManagerImpl;
+import com.example.louis.pokecard_android.data.manager.MembersApiManager;
+import com.example.louis.pokecard_android.data.manager.MembersApiManagerImpl;
 
 /**
  * Created by louis on 18/10/2017.
@@ -17,7 +17,7 @@ public class PokeCardApp extends Application{
 
     private static PokeCardApp pokeCardApp;
 
-    UsersApiManager usersApiManager;
+    MembersApiManager membersApiManager;
     PokeApiManager pokeApiManager;
     Repository repository;
 
@@ -36,17 +36,18 @@ public class PokeCardApp extends Application{
     }
 
     private void initManagers() {
-        usersApiManager = new UsersApiManagerImpl();
+        membersApiManager = new MembersApiMangerMock();
+        //membersApiManager = new MembersApiManagerImpl();
         pokeApiManager = new PokeApiManagerMock();
         //pokeApiManager = new PokeApiManagerImpl();
     }
 
     private void initRepository() {
-        repository = new Repository(usersApiManager, pokeApiManager);
+        repository = new Repository(membersApiManager, pokeApiManager);
     }
 
-    public UsersApiManager getUsersApiManager() {
-        return usersApiManager;
+    public MembersApiManager getMembersApiManager() {
+        return membersApiManager;
     }
 
     public PokeApiManager getPokeApiManager() {

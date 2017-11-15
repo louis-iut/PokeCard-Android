@@ -4,13 +4,21 @@ package com.example.louis.pokecard_android.data.entity;
  * Created by louis on 18/10/2017.
  */
 
-public class User {
+public class Member {
 
     private int id;
     private String firstName;
     private String lastName;
     private String pseudo;
     private String mail;
+
+    public Member(int id, String firstName, String lastName, String pseudo, String mail) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.pseudo = pseudo;
+        this.mail = mail;
+    }
 
     public int getId() {
         return id;
