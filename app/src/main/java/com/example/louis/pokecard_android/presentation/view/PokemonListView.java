@@ -11,5 +11,6 @@ import java.util.List;
 public interface PokemonListView {
 
     void updateList(List<Pokemon> pokemonList);
+    void changeList(boolean onlyUserPokemons);
     void snackbarNoConnexion();
 }

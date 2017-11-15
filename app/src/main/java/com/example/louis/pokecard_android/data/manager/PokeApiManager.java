@@ -13,5 +13,6 @@ import rx.Observable;
 public interface PokeApiManager {
 
     Observable<List<Pokemon>> getPokemonList();
+    Observable<List<Pokemon>> getPokemonListOfUser();
     Observable<Pokemon> getPokemon(int id);
 }

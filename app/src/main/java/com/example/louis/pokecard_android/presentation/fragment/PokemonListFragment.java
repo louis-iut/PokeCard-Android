@@ -31,17 +31,22 @@ import butterknife.ButterKnife;
 
 public class PokemonListFragment extends Fragment implements PokemonListView, PokemonListClickListener{
 
+    private static final String ONLY_USER_POMEKONS_KEY = "com.example.louis.pokecard_android.presentation.fragment.PokemonListFragment.ONLY_USER_POMEKONS_KEY";
+
     private PokemonListPresenter pokemonListPresenter;
     private PokemonListAdapter pokemonListAdapter;
     private View view;
 
+    private boolean onlyUserPokemons;
+
     @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.pokemon_recycler_view) RecyclerView recyclerView;
 
-    public static PokemonListFragment newInstance() {
+    public static PokemonListFragment newInstance(boolean onlyUserPokemons) {
         PokemonListFragment fragment = new PokemonListFragment();
         Bundle args = new Bundle();
 
+        args.putBoolean(ONLY_USER_POMEKONS_KEY, onlyUserPokemons);
         fragment.setArguments(args);
 
         return fragment;
@@ -72,7 +77,14 @@ public class PokemonListFragment extends Fragment implements PokemonListView, Po
         );
 
         pokemonListPresenter.setPokemonListView(this);
-        pokemonListPresenter.getPokemonList();
+
+        if(getArguments() != null && getArguments().containsKey(ONLY_USER_POMEKONS_KEY)) {
+            onlyUserPokemons = getArguments().getBoolean(ONLY_USER_POMEKONS_KEY);
+        } else {
+            onlyUserPokemons = false;
+        }
+
+        pokemonListPresenter.getPokemonList(onlyUserPokemons);
     }
 
     private void initRecyclerView() {
@@ -85,7 +97,7 @@ public class PokemonListFragment extends Fragment implements PokemonListView, Po
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                pokemonListPresenter.getPokemonList();
+                pokemonListPresenter.getPokemonList(onlyUserPokemons);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -94,6 +106,13 @@ public class PokemonListFragment extends Fragment implements PokemonListView, Po
     @Override
     public void updateList(List<Pokemon> pokemonList) {
         pokemonListAdapter.updateList(pokemonList);
+    }
+
+    @Override
+    public void changeList(boolean onlyUserPokemons) {
+        this.onlyUserPokemons = onlyUserPokemons;
+
+        pokemonListPresenter.getPokemonList(onlyUserPokemons);
     }
 
     @Override

@@ -1,12 +1,13 @@
 package com.example.louis.pokecard_android.presentation.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
+import com.example.louis.pokecard_android.presentation.component.MenuDrawer;
 import com.example.louis.pokecard_android.presentation.listener.MemberNavigatorListener;
 import com.example.louis.pokecard_android.presentation.navigator.MemberNavigator;
-import com.example.louis.pokecard_android.presentation.navigator.PokemonNavigator;
 
 public class MemberActivity extends AppCompatActivity implements MemberNavigatorListener {
 
@@ -16,6 +17,10 @@ public class MemberActivity extends AppCompatActivity implements MemberNavigator
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        MenuDrawer menuDrawer = PokeCardApp.getInstance().getMenuDrawer();
+        menuDrawer.createNavigationDrawer(this);
+
         memberNavigator = new MemberNavigator(getFragmentManager());
         memberNavigator.launchMemberListFragment();
     }

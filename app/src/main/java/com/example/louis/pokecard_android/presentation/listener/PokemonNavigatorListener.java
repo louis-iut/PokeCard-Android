@@ -7,7 +7,8 @@ package com.example.louis.pokecard_android.presentation.listener;
 public interface PokemonNavigatorListener {
 
     void displayPokemonDetail(int id);
-    void displayPokemonList();
+    void displayPokemonList(boolean onlyUserPokemons);
+    void changeList(boolean onlyUserPokemons);
     void onBackPressed();
     void shareAction(String url);
 }

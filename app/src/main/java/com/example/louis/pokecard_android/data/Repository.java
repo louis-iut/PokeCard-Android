@@ -31,6 +31,10 @@ public class Repository {
         return pokeApiManager.getPokemonList();
     }
 
+    public Observable<List<Pokemon>> getPokemonListOfUser() {
+        return pokeApiManager.getPokemonListOfUser();
+    }
+
     public Observable<Pokemon> getPokemon(int id) {
         return pokeApiManager.getPokemon(id);
     }

@@ -22,11 +22,20 @@ public class PokeApiManagerMock implements PokeApiManager {
 
     @Override
     public Observable<List<Pokemon>> getPokemonList() {
-
         return Observable.defer(new Func0<Observable<List<Pokemon>>>() {
             @Override
             public Observable<List<Pokemon>> call() {
                 return Observable.just(createPokeListMock());
+            }
+        });
+    }
+
+    @Override
+    public Observable<List<Pokemon>> getPokemonListOfUser() {
+        return Observable.defer(new Func0<Observable<List<Pokemon>>>() {
+            @Override
+            public Observable<List<Pokemon>> call() {
+                return Observable.just(createPokeListMock().subList(0, 2));
             }
         });
     }

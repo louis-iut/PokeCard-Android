@@ -16,6 +16,7 @@ import com.example.louis.pokecard_android.presentation.view.PokemonListView;
 public class PokemonNavigator {
 
     private FragmentManager fragmentManager;
+    private PokemonListView pokemonListView;
 
     private final static int POKE_LIST_FRAGMENT = 0;
     private final static int POKE_DETAIL_FRAGMENT = 1;
@@ -25,8 +26,9 @@ public class PokemonNavigator {
         this.fragmentManager = fragmentManager;
     }
 
-    public void launchPokemonListFragment() {
-        PokemonListView pokemonListView = PokemonListFragment.newInstance();
+    public void launchPokemonListFragment(boolean onlyUserPokemons) {
+
+        pokemonListView = PokemonListFragment.newInstance(onlyUserPokemons);
 
         fragmentManager
                 .beginTransaction()
@@ -47,6 +49,12 @@ public class PokemonNavigator {
                 .commit();
 
         currentFragment = POKE_DETAIL_FRAGMENT;
+    }
+
+    public void changePokemonList(boolean onlyUserPokemons) {
+        if (pokemonListView != null) {
+            pokemonListView.changeList(onlyUserPokemons);
+        }
     }
 
     public void backAction() {

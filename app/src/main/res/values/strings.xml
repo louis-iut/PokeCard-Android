@@ -2,8 +2,10 @@
     <string name="app_name">PokeCard-Android</string>
 
     <!-- Menu -->
-    <string name="menu_label_pokemons">Mes Pokemons</string>
+    <string name="menu_label_pokemons">Tout les Pokemons</string>
     <string name="menu_label_members">Membres</string>
+    <string name="menu_label_exchange">Échanger des Pokémons</string>
+    <string name="menu_label_user_pokemons">mes Pokémons</string>
 
 
 </resources>

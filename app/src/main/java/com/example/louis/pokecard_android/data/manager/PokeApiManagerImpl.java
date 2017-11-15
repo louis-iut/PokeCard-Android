@@ -17,6 +17,11 @@ public class PokeApiManagerImpl implements PokeApiManager {
     }
 
     @Override
+    public Observable<List<Pokemon>> getPokemonListOfUser() {
+        return null;
+    }
+
+    @Override
     public Observable<Pokemon> getPokemon(int id) {
         return null;
     }

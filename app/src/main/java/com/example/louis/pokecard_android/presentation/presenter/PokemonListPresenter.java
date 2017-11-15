@@ -31,8 +31,12 @@ public class PokemonListPresenter {
         this.pokemonListView = pokemonListView;
     }
 
-    public void getPokemonList() {
-        observe(repository.getPokemonList());
+    public void getPokemonList(boolean onlyUserPokemons) {
+        if (onlyUserPokemons) {
+            observe(repository.getPokemonListOfUser());
+        } else {
+            observe(repository.getPokemonList());
+        }
     }
 
     private void observe(Observable<List<Pokemon>> observable) {
