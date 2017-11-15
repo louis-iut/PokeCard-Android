@@ -18,8 +18,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginNavigator loginNavigator;
 
-    CallbackManager callbackManager = CallbackManager.Factory.create();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

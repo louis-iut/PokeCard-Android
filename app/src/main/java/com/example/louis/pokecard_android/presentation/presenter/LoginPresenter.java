@@ -2,6 +2,7 @@ package com.example.louis.pokecard_android.presentation.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.example.louis.pokecard_android.data.Repository;
@@ -9,6 +10,9 @@ import com.example.louis.pokecard_android.presentation.view.LoginView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -32,7 +36,23 @@ public class LoginPresenter {
         return new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.e("success",loginResult.toString());
+
+                GraphRequest request = new GraphRequest(
+                        loginResult.getAccessToken(),
+                        "/" + loginResult.getAccessToken().getUserId(),
+                        null,
+                        HttpMethod.GET,
+                        new GraphRequest.Callback() {
+                            public void onCompleted(GraphResponse response) {
+                                Log.e("response", response.getRawResponse());
+                            }
+                        }
+                );
+                Bundle parameters = new Bundle();
+                parameters.putString("fields","id,first_name,last_name,email,name,picture");
+                request.setParameters(parameters);
+                request.executeAsync();
+
             }
 
             @Override

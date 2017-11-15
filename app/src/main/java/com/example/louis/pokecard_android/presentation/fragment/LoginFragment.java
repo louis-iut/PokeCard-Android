@@ -3,6 +3,7 @@ package com.example.louis.pokecard_android.presentation.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,8 +23,17 @@ import com.example.louis.pokecard_android.presentation.view.LoginView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +61,6 @@ public class LoginFragment extends Fragment implements LoginClickListener, Login
         return fragment;
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -60,23 +69,10 @@ public class LoginFragment extends Fragment implements LoginClickListener, Login
         ButterKnife.bind(this, view);
 
         loginPresenter = new LoginPresenter(this, getActivity());
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
 
-            }
+        loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));
 
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                Log.e("ERROR",exception.toString());
-            }
-
-        });
+        loginButton.registerCallback(callbackManager, loginPresenter.setButtonClickListener());
 
         return view;
     }
