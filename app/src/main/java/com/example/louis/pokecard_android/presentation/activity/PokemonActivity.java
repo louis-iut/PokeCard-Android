@@ -29,7 +29,7 @@ public class PokemonActivity extends AppCompatActivity implements PokemonNavigat
         if(intent != null && intent.getExtras() != null && intent.getExtras().containsKey(ONLY_USER_POMEKONS_KEY)) {
             onlyUserPokemons = intent.getExtras().getBoolean(ONLY_USER_POMEKONS_KEY);
         } else {
-            onlyUserPokemons = false;
+            onlyUserPokemons = true;
         }
 
         pokemonNavigator = new PokemonNavigator(getFragmentManager());

@@ -20,12 +20,12 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class MenuDrawerImpl implements MenuDrawer {
 
-    private final static int POKEMON_MENU_ID = 1;
-    private final static int MEMBERS_MENU_ID = 2;
-    private final static int EXCHANGE_MENU_ID = 3;
-    private final static int USER_POKEMONS_MENU_ID = 4;
+    private final static int USER_POKEMONS_MENU_ID = 1;
+    private final static int POKEMON_MENU_ID = 2;
+    private final static int MEMBERS_MENU_ID = 3;
+    private final static int EXCHANGE_MENU_ID = 4;
 
-    private int currentItem = POKEMON_MENU_ID;
+    private int currentItem = 1;
 
     private MenuNavigator menuNavigator;
     private Activity activity;
@@ -53,10 +53,10 @@ public class MenuDrawerImpl implements MenuDrawer {
                 .withActivity(activity)
                 .withAccountHeader(createAccountHeader())
                 .addDrawerItems(
+                        userPokemonsItem,
                         pokemonItem,
                         memberItem,
-                        exchangeItem,
-                        userPokemonsItem
+                        exchangeItem
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override

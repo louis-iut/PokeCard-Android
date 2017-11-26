@@ -19,11 +19,13 @@ public class MenuNavigator {
        intent.putExtra(ONLY_USER_POMEKONS_KEY, onlyUserPokemons);
 
         activity.startActivity(intent);
+        activity.finish();
     }
 
     public void launchMembersActivity(Activity activity) {
         Intent intent = new Intent(activity, MemberActivity.class);
         activity.startActivity(intent);
+        activity.finish();
     }
 
     public void changeList(Activity activity, boolean onlyUserPokemons) {
