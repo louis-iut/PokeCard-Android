@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.presenter.PokemonDetailPresenter;
 import com.example.louis.pokecard_android.presentation.view.PokemonDetailView;
@@ -63,7 +63,7 @@ public class PokemonDetailFragment extends Fragment implements PokemonDetailView
     }
 
     @Override
-    public void updateUI(Pokemon pokemon) {
+    public void updateUI(PokemonRemoteEntity pokemon) {
         pokemonName.setText(pokemon.getName());
        /* titleView.setText(comicsViewModel.getComicsEntity().getTitle());
         diamondCodeView.setText(getResources().getString(R.string.diamond_code) + comicsViewModel.getComicsEntity().getDiamondCode());

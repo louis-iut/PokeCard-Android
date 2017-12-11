@@ -2,7 +2,8 @@ package com.example.louis.pokecard_android;
 
 import android.app.Application;
 
-import com.example.louis.pokecard_android.data.Repository;
+import com.example.louis.pokecard_android.data.manager.PokeApiManagerImpl;
+import com.example.louis.pokecard_android.data.repository.Repository;
 import com.example.louis.pokecard_android.data.manager.MembersApiMangerMock;
 import com.example.louis.pokecard_android.data.manager.PokeApiManager;
 import com.example.louis.pokecard_android.data.manager.PokeApiManagerMock;
@@ -45,8 +46,8 @@ public class PokeCardApp extends Application{
     private void initManagers() {
         membersApiManager = new MembersApiMangerMock();
         //membersApiManager = new MembersApiManagerImpl();
-        pokeApiManager = new PokeApiManagerMock();
-        //pokeApiManager = new PokeApiManagerImpl();
+        //pokeApiManager = new PokeApiManagerMock();
+        pokeApiManager = new PokeApiManagerImpl();
     }
 
     private void initRepository() {

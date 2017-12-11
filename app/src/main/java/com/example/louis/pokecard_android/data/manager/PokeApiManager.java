@@ -1,6 +1,6 @@
 package com.example.louis.pokecard_android.data.manager;
 
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import rx.Observable;
 
 public interface PokeApiManager {
 
-    Observable<List<Pokemon>> getPokemonList();
-    Observable<List<Pokemon>> getPokemonListOfUser();
-    Observable<Pokemon> getPokemon(int id);
+    Observable<List<PokemonRemoteEntity>> getPokemonList(int page, int number);
+    Observable<List<PokemonRemoteEntity>> getPokemonListOfUser(int userId);
+    Observable<PokemonRemoteEntity> getPokemon(int id);
 }

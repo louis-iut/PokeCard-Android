@@ -1,7 +1,7 @@
 package com.example.louis.pokecard_android.presentation.presenter;
 
-import com.example.louis.pokecard_android.data.Repository;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.repository.Repository;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.view.PokemonListView;
 
@@ -39,23 +39,26 @@ public class PokemonListPresenter {
         }
     }
 
-    private void observe(Observable<List<Pokemon>> observable) {
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Pokemon>>() {
-                    @Override
-                    public void onCompleted() {}
+    private void observe(Observable<List<PokemonRemoteEntity>> observable) {
+        if (observable != null) {
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<List<PokemonRemoteEntity>>() {
+                        @Override
+                        public void onCompleted() {
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        pokemonListView.snackbarNoConnexion();
-                    }
+                        @Override
+                        public void onError(Throwable e) {
+                            pokemonListView.snackbarNoConnexion();
+                        }
 
-                    @Override
-                    public void onNext(List<Pokemon> pokemonList) {
-                        pokemonListView.updateList(pokemonList);
-                    }
-                });
+                        @Override
+                        public void onNext(List<PokemonRemoteEntity> pokemonList) {
+                            pokemonListView.updateList(pokemonList);
+                        }
+                    });
+        }
     }
 
     public void onClickOnComicsList(int id) {

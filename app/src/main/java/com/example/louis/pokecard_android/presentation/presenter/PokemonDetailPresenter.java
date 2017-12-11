@@ -1,7 +1,7 @@
 package com.example.louis.pokecard_android.presentation.presenter;
 
-import com.example.louis.pokecard_android.data.Repository;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.repository.Repository;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.view.PokemonDetailView;
 
@@ -33,10 +33,10 @@ public class PokemonDetailPresenter {
         observe(repository.getPokemon(id));
     }
 
-    private void observe(Observable<Pokemon> observable) {
+    private void observe(Observable<PokemonRemoteEntity> observable) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Pokemon>() {
+                .subscribe(new Subscriber<PokemonRemoteEntity>() {
                     @Override
                     public void onCompleted() {}
 
@@ -46,7 +46,7 @@ public class PokemonDetailPresenter {
                     }
 
                     @Override
-                    public void onNext(Pokemon pokemon) {
+                    public void onNext(PokemonRemoteEntity pokemon) {
                         pokemonDetailView.updateUI(pokemon);
                     }
                 });

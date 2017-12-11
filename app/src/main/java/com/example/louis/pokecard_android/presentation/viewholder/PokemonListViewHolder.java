@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.louis.pokecard_android.R;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
 import com.squareup.picasso.Picasso;
 
@@ -31,7 +31,7 @@ public class PokemonListViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(Context context, final Pokemon pokemon, final PokemonListClickListener pokemonListClickListener) {
+    public void bind(Context context, final PokemonRemoteEntity pokemon, final PokemonListClickListener pokemonListClickListener) {
         Picasso.with(context).load(pokemon.getImage()).into(pokemonImage);
         pokemonName.setText(pokemon.getName());
 

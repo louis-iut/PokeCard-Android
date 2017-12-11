@@ -1,8 +1,7 @@
 package com.example.louis.pokecard_android.presentation.presenter;
 
-import com.example.louis.pokecard_android.data.Repository;
+import com.example.louis.pokecard_android.data.repository.Repository;
 import com.example.louis.pokecard_android.data.entity.Member;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
 import com.example.louis.pokecard_android.presentation.listener.MemberNavigatorListener;
 import com.example.louis.pokecard_android.presentation.view.MemberDetailView;
 

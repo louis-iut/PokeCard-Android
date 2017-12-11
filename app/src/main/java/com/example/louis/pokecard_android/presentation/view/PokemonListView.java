@@ -1,6 +1,6 @@
 package com.example.louis.pokecard_android.presentation.view;
 
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PokemonListView {
 
-    void updateList(List<Pokemon> pokemonList);
+    void updateList(List<PokemonRemoteEntity> pokemonList);
     void changeList(boolean onlyUserPokemons);
     void snackbarNoConnexion();
 }

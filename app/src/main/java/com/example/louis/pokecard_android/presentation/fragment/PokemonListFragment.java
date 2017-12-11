@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
 import com.example.louis.pokecard_android.presentation.adapter.PokemonListAdapter;
 import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
@@ -104,7 +104,7 @@ public class PokemonListFragment extends Fragment implements PokemonListView, Po
     }
 
     @Override
-    public void updateList(List<Pokemon> pokemonList) {
+    public void updateList(List<PokemonRemoteEntity> pokemonList) {
         pokemonListAdapter.updateList(pokemonList);
     }
 

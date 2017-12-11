@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.louis.pokecard_android.R;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
+import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonListClickListener;
 import com.example.louis.pokecard_android.presentation.viewholder.PokemonListViewHolder;
 
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListViewHolder>{
 
-    private List<Pokemon> pokemonList;
+    private List<PokemonRemoteEntity> pokemonList;
     private Context context;
     private PokemonListClickListener pokemonListClickListener;
 
@@ -39,7 +39,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListViewHold
 
     @Override
     public void onBindViewHolder(PokemonListViewHolder holder, int position) {
-        Pokemon pokemon = pokemonList.get(position);
+        PokemonRemoteEntity pokemon = pokemonList.get(position);
         holder.bind(context, pokemon, pokemonListClickListener);
     }
 
@@ -48,7 +48,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListViewHold
         return pokemonList.size();
     }
 
-    public void updateList(List<Pokemon> pokemonList) {
+    public void updateList(List<PokemonRemoteEntity> pokemonList) {
         this.pokemonList = pokemonList;
         notifyDataSetChanged();
     }

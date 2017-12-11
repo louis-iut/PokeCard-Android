@@ -1,7 +1,6 @@
 package com.example.louis.pokecard_android.data.manager;
 
 import com.example.louis.pokecard_android.data.entity.Member;
-import com.example.louis.pokecard_android.data.entity.Pokemon;
 
 import java.util.ArrayList;
 import java.util.List;
