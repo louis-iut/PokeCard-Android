@@ -29,6 +29,7 @@ public class PokeApiManagerImpl implements PokeApiManager {
     }
 
     public PokeApiManagerImpl() {
+
         Gson gson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()

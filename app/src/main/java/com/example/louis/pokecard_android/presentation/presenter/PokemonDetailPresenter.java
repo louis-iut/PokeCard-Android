@@ -34,22 +34,25 @@ public class PokemonDetailPresenter {
     }
 
     private void observe(Observable<PokemonRemoteEntity> observable) {
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PokemonRemoteEntity>() {
-                    @Override
-                    public void onCompleted() {}
+        if(observable != null) {
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<PokemonRemoteEntity>() {
+                        @Override
+                        public void onCompleted() {
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        pokemonDetailView.snackbarNoConnexion();
-                    }
+                        @Override
+                        public void onError(Throwable e) {
+                            pokemonDetailView.snackbarNoConnexion();
+                        }
 
-                    @Override
-                    public void onNext(PokemonRemoteEntity pokemon) {
-                        pokemonDetailView.updateUI(pokemon);
-                    }
-                });
+                        @Override
+                        public void onNext(PokemonRemoteEntity pokemon) {
+                            pokemonDetailView.updateUI(pokemon);
+                        }
+                    });
+        }
     }
 
     public void backAction() {

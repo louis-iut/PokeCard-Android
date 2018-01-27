@@ -3,12 +3,20 @@ package com.example.louis.pokecard_android.presentation.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.louis.pokecard_android.PokeCardApp;
 import com.example.louis.pokecard_android.R;
+import com.example.louis.pokecard_android.data.entity.UserRemoteEntity;
+import com.example.louis.pokecard_android.data.repository.LoginRepository;
 import com.example.louis.pokecard_android.presentation.component.MenuDrawer;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
+import com.example.louis.pokecard_android.presentation.navigator.LoginNavigator;
 import com.example.louis.pokecard_android.presentation.navigator.PokemonNavigator;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 import static com.example.louis.pokecard_android.presentation.navigator.MenuNavigator.ONLY_USER_POMEKONS_KEY;
 
@@ -32,7 +40,27 @@ public class PokemonActivity extends AppCompatActivity implements PokemonNavigat
             onlyUserPokemons = true;
         }
 
-        pokemonNavigator = new PokemonNavigator(getFragmentManager());
+        LoginRepository loginRepository = PokeCardApp.getInstance().getLoginRepository();
+        loginRepository.loginRequest("a", "a").subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<UserRemoteEntity>() {
+                               @Override
+                               public void onCompleted() {
+
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   Log.e("NONONNON", e.toString());
+                               }
+
+                               @Override
+                               public void onNext(UserRemoteEntity userRemoteEntity) {
+                                    Log.e("OOUOOUO", userRemoteEntity.toString());
+                               }
+                           });
+
+                        pokemonNavigator = new PokemonNavigator(getFragmentManager());
         pokemonNavigator.launchPokemonListFragment(onlyUserPokemons);
     }
 

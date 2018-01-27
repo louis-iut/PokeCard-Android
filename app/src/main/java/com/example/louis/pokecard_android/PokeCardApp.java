@@ -2,7 +2,10 @@ package com.example.louis.pokecard_android;
 
 import android.app.Application;
 
+import com.example.louis.pokecard_android.data.manager.LoginApiManager;
+import com.example.louis.pokecard_android.data.manager.LoginApiManagerImpl;
 import com.example.louis.pokecard_android.data.manager.PokeApiManagerImpl;
+import com.example.louis.pokecard_android.data.repository.LoginRepository;
 import com.example.louis.pokecard_android.data.repository.Repository;
 import com.example.louis.pokecard_android.data.manager.MembersApiMangerMock;
 import com.example.louis.pokecard_android.data.manager.PokeApiManager;
@@ -22,7 +25,11 @@ public class PokeCardApp extends Application{
 
     private MembersApiManager membersApiManager;
     private PokeApiManager pokeApiManager;
+    private LoginApiManager loginApiManager;
+
     private Repository repository;
+    private LoginRepository loginRepository;
+
     private MenuDrawer menuDrawer;
     private MenuNavigator menuNavigator;
 
@@ -48,10 +55,13 @@ public class PokeCardApp extends Application{
         //membersApiManager = new MembersApiManagerImpl();
         //pokeApiManager = new PokeApiManagerMock();
         pokeApiManager = new PokeApiManagerImpl();
+        loginApiManager = new LoginApiManagerImpl(this);
     }
 
     private void initRepository() {
         repository = new Repository(membersApiManager, pokeApiManager);
+        loginRepository = new LoginRepository(loginApiManager);
+
     }
 
     private void initComponents() {
@@ -76,5 +86,13 @@ public class PokeCardApp extends Application{
 
     public MenuNavigator getMenuNavigator() {
         return menuNavigator;
+    }
+
+    public LoginApiManager getLoginApiManager() {
+        return loginApiManager;
+    }
+
+    public LoginRepository getLoginRepository() {
+        return loginRepository;
     }
 }

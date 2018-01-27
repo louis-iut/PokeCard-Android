@@ -28,7 +28,7 @@ public class Repository {
     }
 
     public Observable<List<PokemonRemoteEntity>> getPokemonList() {
-        return pokeApiManager.getPokemonList(0, 10);
+        return pokeApiManager.getPokemonList(0, 800);
     }
 
     public Observable<List<PokemonRemoteEntity>> getPokemonListOfUser() {

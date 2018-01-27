@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">PokeCard-Android</string>
+    <!--<string name="FACEBOOK_APP_ID">800718040120027</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">[ACCOUNT_KIT_CLIENT_TOKEN]</string>-->
+    <string name="facebook_app_id">800718040120027</string>
+    <string name="fb_login_protocol_scheme">fb800718040120027</string>
 
     <!-- Menu -->
-    <string name="menu_label_pokemons">Tout les Pokemons</string>
-    <string name="menu_label_members">Membres</string>
-    <string name="menu_label_exchange">Échanger des Pokémons</string>
-    <string name="menu_label_user_pokemons">Mes Pokémons</string>
+    <string name="menu_label_pokemons">Pokedex</string>
+    <string name="menu_label_members">Members</string>
+    <string name="menu_label_exchange">Pokemons exchanges</string>
+    <string name="menu_label_user_pokemons">My Pokemons</string>
+
+    <!-- Log -->
+    <string name="retrofit_log">Retrofit Request</string>
 
 
 </resources>

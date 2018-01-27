@@ -1,5 +1,7 @@
 package com.example.louis.pokecard_android.presentation.presenter;
 
+import android.util.Log;
+
 import com.example.louis.pokecard_android.data.repository.Repository;
 import com.example.louis.pokecard_android.data.entity.PokemonRemoteEntity;
 import com.example.louis.pokecard_android.presentation.listener.PokemonNavigatorListener;
@@ -51,6 +53,7 @@ public class PokemonListPresenter {
                         @Override
                         public void onError(Throwable e) {
                             pokemonListView.snackbarNoConnexion();
+                            Log.e("ERROR", e.toString());
                         }
 
                         @Override
